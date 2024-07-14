@@ -1,6 +1,6 @@
 async function loadConfig() {
     try {
-        const response = await fetch('/config/config.json');
+        const response = await fetch('config/config.json');
         if (!response.ok) {
             throw new Error('Failed to load config');
         }
