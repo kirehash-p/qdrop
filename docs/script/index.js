@@ -9,7 +9,7 @@ let dropStock = [];
         for (i = 1; i <= odai_list.data.length; i++) {
             const odaiElement = `
                 <div class="odai_element" id="odai-${i}" style="visibility: hidden;">
-                    <a href="/odai.html?path=${odai_list.data[i - 1].url_path}">
+                    <a href="odai.html?path=${odai_list.data[i - 1].url_path}">
                         <img src="image/drop.png" alt="${odai_list.data[i - 1].title}" class="odai_img">
                         <div class="odai_text">
                             <h2>${odai_list.data[i - 1].title}</h2>
