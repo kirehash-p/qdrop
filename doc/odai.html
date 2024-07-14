@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>問いのシャワー</title>
+    <link rel="stylesheet" href="css/odai.css" />
+    <script src="script/common/helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+  </head>
+  <body>
+    <div id="description">
+      <h1 id="odai-title"></h1>
+      <p id="odai-description"></p>
+    </div>
+    <div id="odai-container">
+      <div id="odai-canvas"></div>
+      <div id="odai-button-area">
+        <button id="odai-reset" onclick="resetCanvas();">リセット</button>
+        <button id="odai-submit" disabled onclick="submitOdai();">提出</button>
+        <span id="odai-submit-message"><input type="checkbox" id="agree-checkbox"/><a href="policy.html" target="_blank">データの扱いについて</a>を読み、同意します</span>
+      </div>
+    </div>
+    <script src="script/odai.js"></script>
+    <footer>
+      <p>2024年度 メディアと芸術 A班</p>
+    </footer>
+    <div id="background">
+      <div class="background_image"></div>
+      <img class="background_umbrella" src="image/umbrella.png" alt="傘">
+    </div>
+  </body>
+</html>
