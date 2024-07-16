@@ -52,8 +52,8 @@
 
 .background_sun {
     position: absolute;
-    top: -150px;
-    left: -150px;
+    top: -10svw;
+    left: -10svw;
     transform: translate(-50%, -50%);
     width: 400px;
     height: auto;
