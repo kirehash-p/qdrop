@@ -75,7 +75,7 @@ def submit_answer():
     if err:
         print(err)
         return res_template.db_error()
-    return jsonify({"success": True, "redirect": "/odai/" + odai['url_path']})
+    return jsonify({"success": True})
 
 @app.errorhandler(404)
 def page_not_found(e):

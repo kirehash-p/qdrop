@@ -74,7 +74,7 @@ function submitOdai() {
         .then((data) => {
             if (data.success) {
                 alert("投稿しました！");
-                location.href = data.redirect;
+                window.location.href = "answer.html?path=" + getParams().get("path");
             } else {
                 alert("投稿に失敗しました。");
             }

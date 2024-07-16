@@ -63,12 +63,12 @@ function drop_odai(odaiNum) {
     }
     let y = -element_height;
     odaiElement.style.top = `${y}px`;
+    odaiElement.style.left = `${x}px`;
     odaiElement.style.visibility = 'visible';
     let dy = (window.innerHeight + element_height) / 1000;
     let intervalId = setInterval(() => {
         y += dy;
         odaiElement.style.top = `${y}px`;
-        odaiElement.style.left = `${x}px`;
         if (y > window.innerHeight + element_height) {
             odaiElement.style.visibility = 'hidden';
             odaiElement.style.top = `-${element_height}px`;
