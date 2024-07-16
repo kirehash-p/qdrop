@@ -81,6 +81,36 @@
     }
 }
 
+.background_cloud {
+    position: fixed;
+    top: 100%;
+    left: -300px;
+    transform: translate(0, -60%);
+    width: 800px;
+    height: 800px;
+    background: url("../image/bgcloud.png") no-repeat;
+    background-size: cover;
+    z-index: -3;
+    animation: moveCloud 60s linear infinite;
+}
+
+@keyframes moveCloud {
+    from {
+        left: 100svw;
+    }
+    to {
+        left: -800px;
+    }
+}
+
+.background_rainbow {
+    position: fixed;
+    top: 100%;
+    left: 80%;
+    transform: translate(-50%, -70%);
+    z-index: -2;
+}
+
 footer {
     position: fixed;
     display: flex;
