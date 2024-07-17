@@ -59,6 +59,12 @@ function submitOdai() {
     resizedImg.filter(THRESHOLD);
     let imgData = resizedImg.canvas.toDataURL();
     imgData = imgData.replace(/^data:image\/\w+;base64,/, "");
+    if (cfg.IS_MOCK) {
+        // imgDataをWebStorageに保存
+        localStorage.setItem("temp_img_" + getParams().get("path"), imgData);
+        alert("投稿しました！");
+        window.location.href = "answer.html?path=" + getParams().get("path");
+    }
     let payload = {
         url_path: getParams().get("path"),
         img: imgData,

@@ -3,29 +3,39 @@ let cloudStock = [];
 (async () => {
     await loadConfig();
     const params = getParams();
-    const cloud_list = await get_cloud_list(params.get('path'));
-    if (cloud_list.success) {
-        const cloudContainer = document.getElementById('answer-container');
-        for (i = 1; i <= cloud_list.data.length; i++) {
-            const cloudElement = `
+    var answer_list = await get_answer_list(params.get('path'));
+    if (cfg.IS_MOCK) {
+        try {
+            const imgData = localStorage.getItem("temp_img_" + params.get('path'));
+            answer_list.data.push({
+                answer: imgData,
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    if (answer_list.success) {
+        const answerContainer = document.getElementById('answer-container');
+        for (i = 1; i <= answer_list.data.length; i++) {
+            const answerElement = `
                 <div class="answer_element" id="answer-${i}" style="visibility: hidden;">
                     <img src="image/cloud.png" alt="雲" class="cloud_img">
                     <div class="answer_img">
-                        <img src="data:image/png;base64,${cloud_list.data[i - 1].answer}">
+                        <img src="data:image/png;base64,${answer_list.data[i - 1].answer}">
                     </div>
                 </div>`;
-            cloudContainer.insertAdjacentHTML('beforeend', cloudElement);
+            answerContainer.insertAdjacentHTML('beforeend', answerElement);
         }
-        for (i = 1; i <= cloud_list.data.length; i++) {
+        for (i = 1; i <= answer_list.data.length; i++) {
             cloudStock.push(i);
         }
-        const interval = 50 / (cloud_list.data.length - 1) * 1000;
+        const interval = 50 / (answer_list.data.length - 1) * 1000;
         setTimeout(choose_and_drop_cloud, 100);
         setInterval(choose_and_drop_cloud, interval);
     };
 })();
 
-async function get_cloud_list(path) {
+async function get_answer_list(path) {
     try {
         const response = await fetch(`${cfg.API_URL}/answer/${path}.json`);
         if (!response.ok) {
@@ -38,6 +48,9 @@ async function get_cloud_list(path) {
 }
 
 function choose_and_drop_cloud() {
+    if (cloudStock.length === 0) {
+        return;
+    }
     const randomIdx = Math.floor(Math.random() * cloudStock.length);
     const cloudNum = cloudStock[randomIdx];
     cloudStock.splice(randomIdx, 1);
@@ -47,8 +60,8 @@ function choose_and_drop_cloud() {
 let past_y = 0;
 function drop_cloud(cloudNum) {
     const cloudElement = document.getElementById(`answer-${cloudNum}`);
-    const element_height = parseInt(cloudElement.clientHeight);
     const element_width = parseInt(cloudElement.clientWidth);
+    const element_height = parseInt(cloudElement.clientHeight);
     let y;
     while (true) {
         y = Math.floor((0.1 + Math.random() * 0.8) * (window.innerHeight - element_height));

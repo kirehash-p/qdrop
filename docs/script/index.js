@@ -42,6 +42,9 @@ async function get_odai_list() {
 }
 
 function choose_and_drop_odai() {
+    if (dropStock.length === 0) {
+        return;
+    }
     const randomIdx = Math.floor(Math.random() * dropStock.length);
     const odaiNum = dropStock[randomIdx];
     dropStock.splice(randomIdx, 1);
