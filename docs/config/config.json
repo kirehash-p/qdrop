@@ -1,4 +1,4 @@
 {
-    "API_URL": "https://qdrop.fly.dev",
-    "IS_MOCK": false
+    "API_URL": "https://kirehash-p.github.io/qdrop/mock_server",
+    "IS_MOCK": true
 }
